@@ -1,0 +1,25 @@
+{% extends "FrontBundle:Layouts:stylesAndLibs.html.twig" %}
+{% block headlinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/ui/jquery-ui-1.10.3.custom.min.css">
+{% endblock %}
+
+{% block body %}
+
+
+
+
+
+{% endblock %}
+
+{% block footscripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/js/vendor/jQuery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/jQuery/i18n/jquery.ui.datepicker-fr.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+            $("#date").datepicker();
+        });
+    </script>
+{% endblock %}

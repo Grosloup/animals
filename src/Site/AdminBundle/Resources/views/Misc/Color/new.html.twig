@@ -1,0 +1,86 @@
+{% extends "AdminBundle:Layouts:master.html.twig" %}
+{% block headlinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/jPicker-1.1.6.min.css">
+{% endblock %}
+{% form_theme form "BaseBundle:Form:form_layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col2">
+                {{ include("AdminBundle:Layouts:side-nav.html.twig") }}
+
+            </div>
+            <div class="col10">
+                <h1>Gestion des détails</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2">
+                <ul class="side-nav">
+                    <li><a href="{{ path("admin_misc_color_new") }}">Ajouter une couleur</a></li>
+                    <li><a href="{{ path("admin_misc_event_type_new") }}">Ajouter un type d'événement</a></li>
+                </ul>
+            </div>
+            <div class="col10">
+                <h2>gestion des couleurs - Ajouter une couleur</h2>
+
+                <form class="hform" action="{{ path("admin_misc_color_create") }}" method="post" {{ form_enctype(form) }}>
+                    {{ form_widget(form) }}
+                    <div class="form-row">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" formnovalidate>Créer</button>
+                            <button type="button" class="btn">Annuler</button>
+                        </div>
+
+                    </div>
+                </form>
+                <div id="colorresult">
+                    <p style="padding: 15px;">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block footscripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/js/vendor/jQuery/jpicker-1.1.6.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var examplebox = $("#colorresult p"), foreground = $("#color_foreground"), background = $("#color_background");
+
+            if(foreground.val() == ""){
+                foreground.val("000000");
+                examplebox.css({"color": "#000000"});
+            }
+            if(background.val() == ""){
+                background.val("ffffff");
+                examplebox.css({"background-color": "#ffffff"});
+            }
+
+
+            foreground.jPicker(
+                    {window:{position:{y:"bottom"}}},
+                    null,
+                    function(color, context){
+                        var hex = color.val('hex');
+                        examplebox.css(
+                                "color",hex && '#' + hex || 'transparent'
+                        );
+                    });
+
+
+            background.jPicker(
+                    {window:{position:{y:"bottom"}}},
+                    null,
+                    function(color, context){
+                        var hex = color.val('hex');
+                        examplebox.css(
+                                "background-color",hex && '#' + hex || 'transparent'
+                        );
+                    });
+        });
+    </script>
+{% endblock %}

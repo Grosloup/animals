@@ -1,0 +1,30 @@
+testcrud:
+    pattern:  /
+    defaults: { _controller: "BaseBundle:TestCrud:index" }
+
+testcrud_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BaseBundle:TestCrud:show" }
+
+testcrud_new:
+    pattern:  /new
+    defaults: { _controller: "BaseBundle:TestCrud:new" }
+
+testcrud_create:
+    pattern:  /create
+    defaults: { _controller: "BaseBundle:TestCrud:create" }
+    requirements: { _method: post }
+
+testcrud_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BaseBundle:TestCrud:edit" }
+
+testcrud_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BaseBundle:TestCrud:update" }
+    requirements: { _method: post|put }
+
+testcrud_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BaseBundle:TestCrud:delete" }
+    requirements: { _method: post|delete }

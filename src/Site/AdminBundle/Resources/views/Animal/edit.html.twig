@@ -1,0 +1,90 @@
+{% extends "AdminBundle:Layouts:master.html.twig" %}
+
+{% block headlinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/ui/jquery-ui-1.10.3.custom.min.css">
+{% endblock %}
+
+{% form_theme form "BaseBundle:Form:form_layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col2">
+                {{ include("AdminBundle:Layouts:side-nav.html.twig") }}
+
+            </div>
+            <div class="col10">
+                <h1>Gestion des animaux</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2">
+                <ul class="side-nav">
+                    <li><a href="{{ path("admin_animal_homepage") }}" >Liste des animaux</a></li>
+                    <li><a href="{{ path("admin_animal_new") }}" >Ajouter un animal</a></li>
+                </ul>
+            </div>
+            <div class="col10">
+                <h2>Gestion des animaux - Mise à jour</h2>
+
+                <form class="hform" action="{{ path("admin_animal_update", {"id":entity.id}) }}" method="post" {{ form_enctype(form) }}>
+                    <input type="hidden" name="_method" value="PUT" />
+                    {{ form_widget(form) }}
+                    <div class="form-row">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" formnovalidate>Mettre à jour</button>
+                            <button type="button" class="btn">Annuler</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2"></div>
+            <div class="col10">
+                <h2>Supprimer l'animal</h2>
+                <form action="{{ path('admin_animal_delete', { 'id': entity.id }) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    {{ form_widget(delete_form) }}
+                    <button type="submit" class="btn btn-warning">Supprimer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footscripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/js/vendor/jQuery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/jQuery/i18n/jquery.ui.datepicker-fr.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+            $("#animal_form_birthdate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date(1970,0,1)
+            });
+            $("#animal_form_indate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date(1970,0,1)
+            });
+            $("#animal_form_outdate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date(1970,0,1)
+            });
+            $("#animal_form_deathdate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date(1970,0,1)
+            });
+
+
+        });
+    </script>
+{% endblock %}

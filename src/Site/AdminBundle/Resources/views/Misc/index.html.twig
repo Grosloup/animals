@@ -1,0 +1,135 @@
+{% extends "AdminBundle:Layouts:master.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col2">
+                {{ include("AdminBundle:Layouts:side-nav.html.twig") }}
+
+            </div>
+            <div class="col10">
+                <h1>Gestion des détails</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2">
+                <ul class="side-nav">
+                    <li><a href="{{ path("admin_misc_color_new") }}">Ajouter une couleur</a></li>
+                    <li><a href="{{ path("admin_misc_event_type_new") }}">Ajouter un type d'événement</a></li>
+                    <li><a href="{{ path("admin_misc_zoo_new") }}">Ajouter un zoo</a></li>
+                </ul>
+            </div>
+            <div class="col10">
+                <h2>gestion des couleurs</h2>
+                {% if colors|length > 0 %}
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Texte</th>
+                            <th>Fond</th>
+                            <th>Visuel</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for color in colors %}
+                                <tr>
+                                    <td>{{ color.id }}</td>
+                                    <td>{{ color.name }}</td>
+                                    <td>{{ color.foreground }}</td>
+                                    <td>{{ color.background }}</td>
+                                    <td style="background-color: {{ "#" ~ color.background }}; color: {{ "#" ~ color.foreground }};">exemple</td>
+                                    <td><a href="{{ path("admin_misc_color_edit", {"id":color.id}) }}">Editer</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'a pas de couleur enregistée en base de données.</p>
+                {% endif %}
+
+                <h2>Gestion des types d'événement</h2>
+                {% if event_types|length > 0 %}
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Couleur</th>
+                            <th>Slug</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event_type in event_types %}
+                            <tr>
+                                <td>{{ event_type.id }}</td>
+                                <td>{{ event_type.name }}</td>
+                                {% if event_type.hasColor %}
+                                <td style="background-color: {{ "#" ~ event_type.color.background }}; color: {{ "#" ~ event_type.color.foreground }};">{{ event_type.color.name }}</td>
+                                {% else %}
+                                <td>&nbsp;</td>
+                                {% endif %}
+                                <td>{{ event_type.slug }}</td>
+                                <td><a href="{{ path("admin_misc_event_type_edit", {"id":event_type.id}) }}">Editer</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'a pas de type d'événement enregisté en base de données.</p>
+                {% endif %}
+
+                <h2>Gestion des zoos</h2>
+                {% if zoos|length > 0 %}
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for zoo in zoos %}
+                            <tr>
+                                <td>{{ zoo.id }}</td>
+                                <td>{{ zoo.name }}</td>
+                                <td><a href="{{ path("admin_misc_zoo_edit", {"id":zoo.id}) }}">Editer</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'a pas de zoo enregistré en base de données.</p>
+                {% endif %}
+
+                <h2>Liste des status des animaux dans le secteur</h2>
+                {% if status|length > 0 %}
+                    <ul>
+                        {% for st in status %}
+                            <li> - {{ st }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'a pas de status enregisté en configuration.</p>
+                {% endif %}
+
+                <h2>Liste des status IUCN</h2>
+                {% if iucn|length > 0 %}
+                    <ul>
+                        {% for i in iucn %}
+                            <li> - {{ i.initial }} : {{ i.name }} ({{ i.name_fr }})</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'a pas de status IUCN en configuration.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

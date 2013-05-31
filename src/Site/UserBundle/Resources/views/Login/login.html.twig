@@ -1,0 +1,48 @@
+{% extends "UserBundle:Layouts:master.html.twig" %}
+
+
+{% block body %}
+    <div class="top-nav-bar">
+        <div class="container">
+            <div class="nav-bar-inner row">
+
+                <div class="col">
+                    <a class="title" href="#">Secteur Eléphant</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col3"></div>
+            <div class="col6 ">
+                <form class="hform" action="" method="post">
+                    <div class="form-row">
+                        <div class="form-label">
+                            <label for="_username">Nom d'utilisateur : </label>
+                        </div>
+                        <div class="form-controls">
+                            <input type="text" name="_username" id="_username" class="large"/>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">
+                            <label for="_password">Mot de passe : </label>
+                        </div>
+                        <div class="form-controls">
+                            <input type="password" name="_password" id="_password" class="large"/>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Connexion</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

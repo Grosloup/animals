@@ -1,0 +1,53 @@
+{% extends "AdminBundle:Layouts:master.html.twig" %}
+
+{% form_theme form "BaseBundle:Form:form_layout.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col2">
+            {{ include("AdminBundle:Layouts:side-nav.html.twig") }}
+
+        </div>
+        <div class="col10">
+            <h1>Gestion des zoos</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col2">
+            <ul class="side-nav">
+                <li><a href="{{ path("admin_misc_color_new") }}">Ajouter une couleur</a></li>
+                <li><a href="{{ path("admin_misc_event_type_new") }}">Ajouter un type d'événement</a></li>
+                <li><a href="{{ path("admin_misc_zoo_new") }}">Ajouter un zoo</a></li>
+            </ul>
+        </div>
+        <div class="col10">
+            <h2>gestion des zoos - Mise à jour</h2>
+
+            <form class="hform" action="{{ path("admin_misc_zoo_update", {"id":entity.id}) }}" method="post" {{ form_enctype(form) }}>
+            <input type="hidden" name="_method" value="PUT" />
+            {{ form_widget(form) }}
+            <div class="form-row">
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" formnovalidate>Mettre à jour</button>
+                    <button type="button" class="btn">Annuler</button>
+                </div>
+
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col2"></div>
+        <div class="col10">
+            <h2>Supprimer le zoo</h2>
+            <form action="{{ path('admin_misc_zoo_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit" class="btn btn-warning">Supprimer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

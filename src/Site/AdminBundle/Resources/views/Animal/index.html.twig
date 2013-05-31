@@ -1,0 +1,69 @@
+{% extends "AdminBundle:Layouts:master.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col2">
+                {{ include("AdminBundle:Layouts:side-nav.html.twig") }}
+
+            </div>
+            <div class="col10">
+                <h1>Gestion des animaux</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2">
+                <ul class="side-nav">
+                    <li><a href="{{ path("admin_animal_homepage") }}" >Liste des animaux</a></li>
+                    <li><a href="{{ path("admin_animal_new") }}" >Ajouter un animal</a></li>
+                </ul>
+            </div>
+            <div class="col10">
+                <h2>Liste des animaux</h2>
+                {% if animals|length > 0 %}
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Identifiants</th>
+                            <th>Nom</th>
+                            <th>Espèce</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for animal in animals %}
+                            <tr>
+                                <td>{{ animal.id }}</td>
+                                {% if animal.status == "présent" %}
+                                    {% set style="background-color: #1fba41;color: #fff" %}
+                                {% elseif animal.status == "déplacé" %}
+                                    {% set style="background-color: #a1bbc7;color: #1c2c37;" %}
+                                {% elseif animal.status == "parti" %}
+                                    {% set style="background-color: #ff9f35;color: #fff;" %}
+                                {% else %}
+                                    {% set style="background-color: #1c2c37;color: #a1bbc7;" %}
+                                {% endif %}
+                                <td style="{{ style }}">
+                                    <ul>
+                                        {% if animal.chip != null %}<li>{{ animal.chip }}</li>{% endif %}
+                                        {% if animal.earring != null %}<li>{{ animal.earring }}</li>{% endif %}
+                                        {% if animal.collar != null %}<li>{{ animal.collar }}</li>{% endif %}
+                                    </ul>
+                                </td>
+                                <td>{% if animal.name != null %}{{ animal.name }}{% else %}anonyme{% endif %}</td>
+                                <td>{{ animal.species.commonName }}</td>
+                                <td><a href="{{ path("admin_animal_edit", {"id":animal.id}) }}">Editer</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'y a pas d'animal enregistré dans la base de données.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

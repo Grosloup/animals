@@ -1,0 +1,10 @@
+{% extends "FrontBundle:Layouts:master.html.twig" %}
+{% block headlinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/main.css">
+{% endblock %}
+{% block footscripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/js/main.js"></script>
+{% endblock %}

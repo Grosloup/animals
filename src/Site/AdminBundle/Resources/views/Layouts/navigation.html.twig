@@ -1,0 +1,38 @@
+{% set page = app.request.get("_route") %}
+{% set animal_pages = ["admin_animal_homepage","admin_animal_new","admin_animal_create","admin_animal_edit","admin_animal_update","admin_animal_delete"] %}
+{% set species_pages = ["admin_species_homepage","admin_species_new","admin_species_create","admin_species_edit","admin_species_update","admin_species_delete"] %}
+{% set user_pages = ["admin_user_homepage","admin_user_new","admin_user_create","admin_user_edit","admin_user_update","admin_user_delete"] %}
+{% set misc_pages = ["admin_misc_homepage",
+                    "admin_misc_color_index",
+                    "admin_misc_color_new",
+                    "admin_misc_color_create",
+                    "admin_misc_color_edit",
+                    "admin_misc_color_update",
+                    "admin_misc_color_delete"] %}
+
+<div class="top-nav-bar">
+    <div class="container">
+        <div class="nav-bar-inner row">
+            <div class="nav-button">
+                <div class="barrette"></div>
+                <div class="barrette"></div>
+                <div class="barrette"></div>
+            </div>
+            <div class="col">
+                <a class="title" href="{{ path("front_homepage") }}">Secteur Eléphant</a>
+            </div>
+            <div class="navigation">
+                <div class="col">
+                    <ul class="nav">
+
+                        <li {% if page in animal_pages %}class="active"{% endif %}><a href="{{ path("admin_animal_homepage") }}">Animaux</a></li>
+                        <li {% if page in species_pages %}class="active"{% endif %}><a href="{{ path("admin_species_homepage") }}">Espèces</a></li>
+                        <li {% if page in user_pages %}class="active"{% endif %}><a href="{{ path("admin_user_homepage") }}">Utilisateurs</a></li>
+                        <li {% if page in misc_pages %}class="active"{% endif %}><a href="{{ path("admin_misc_homepage") }}">Détails</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

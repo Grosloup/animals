@@ -1,0 +1,54 @@
+{% extends "AdminBundle:Layouts:master.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col2">
+                {{ include("AdminBundle:Layouts:side-nav.html.twig") }}
+
+            </div>
+            <div class="col10">
+                <h1>Gestion des espèces</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col2">
+                <ul class="side-nav">
+                    <li><a href="{{ path("admin_species_homepage") }}" >Liste des espèces</a></li>
+                    <li><a href="{{ path("admin_species_new") }}" >Ajouter une espèce</a></li>
+                </ul>
+            </div>
+            <div class="col10">
+                <h2>Liste des espèces</h2>
+                {% if species|length > 0 %}
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom commun</th>
+                            <th>Nom latin</th>
+                            <th>Nom anglais</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sp in species %}
+                        <tr>
+                            <td>{{ sp.id }}</td>
+                            <td>{{ sp.commonName }}</td>
+                            <td>{{ sp.latinName }}</td>
+                            <td>{{ sp.englishName }}</td>
+                            <td><a href="{{ path("admin_species_edit", {"id":sp.id}) }}">Editer</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="msg simple-inverse">Il n'y a pas d'espèce enregistrée dans la base de données.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

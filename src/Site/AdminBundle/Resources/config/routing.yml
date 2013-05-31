@@ -1,0 +1,191 @@
+admin_homepage:
+    pattern:  /admin
+    defaults: { _controller: AdminBundle:Default:index }
+
+
+
+admin_user_homepage:
+    pattern:  /admin/user
+    defaults: { _controller: AdminBundle:User:index }
+admin_user_new:
+    pattern: /admin/user/new
+    defaults: { _controller: AdminBundle:User:new }
+admin_user_create:
+    pattern: /admin/user/create
+    defaults: { _controller: AdminBundle:User:create }
+    requirements:
+        _method: post
+admin_user_edit:
+    pattern: /admin/user/{id}/edit
+    defaults: { _controller: AdminBundle:User:edit }
+    requirements:
+        id: \d+
+admin_user_update:
+    pattern: /admin/user/{id}/update
+    defaults: { _controller: AdminBundle:User:update }
+    requirements:
+        id: \d+
+        _method: put|post
+admin_user_delete:
+    pattern: /admin/user/{id}/delete
+    defaults: { _controller: AdminBundle:User:delete }
+    requirements:
+        id: \d+
+        _method: delete|post
+
+
+
+admin_misc_homepage:
+    pattern:  /admin/misc
+    defaults: { _controller: AdminBundle:Misc:index }
+
+admin_misc_color_index:
+    pattern: /admin/misc/color
+    defaults: { _controller: AdminBundle:Color:index }
+admin_misc_color_new:
+    pattern: /admin/misc/color/new
+    defaults: { _controller: AdminBundle:Color:new }
+admin_misc_color_create:
+    pattern: /admin/misc/color/create
+    defaults: { _controller: AdminBundle:Color:create }
+    requirements:
+        _method: post
+admin_misc_color_edit:
+    pattern: /admin/misc/color/{id}/edit
+    defaults: { _controller: AdminBundle:Color:edit }
+    requirements:
+        id: \d+
+admin_misc_color_update:
+    pattern: /admin/misc/color/{id}/update
+    defaults: { _controller: AdminBundle:Color:update }
+    requirements:
+        id: \d+
+        _method: put|post
+admin_misc_color_delete:
+    pattern: /admin/misc/color/{id}/delete
+    defaults: { _controller: AdminBundle:Color:delete }
+    requirements:
+        id: \d+
+        _method: delete|post
+
+
+
+
+admin_misc_event_type_index:
+    pattern: /admin/misc/event_type
+    defaults: { _controller: AdminBundle:EventType:index }
+admin_misc_event_type_new:
+    pattern: /admin/misc/event_type/new
+    defaults: { _controller: AdminBundle:EventType:new }
+admin_misc_event_type_create:
+    pattern: /admin/misc/event_type/create
+    defaults: { _controller: AdminBundle:EventType:create }
+    requirements:
+        _method: post
+admin_misc_event_type_edit:
+    pattern: /admin/misc/event_type/{id}/edit
+    defaults: { _controller: AdminBundle:EventType:edit }
+    requirements:
+        id: \d+
+admin_misc_event_type_update:
+    pattern: /admin/misc/event_type/{id}/update
+    defaults: { _controller: AdminBundle:EventType:update }
+    requirements:
+        id: \d+
+        _method: put|post
+admin_misc_event_type_delete:
+    pattern: /admin/misc/event_type/{id}/delete
+    defaults: { _controller: AdminBundle:EventType:delete }
+    requirements:
+        id: \d+
+        _method: delete|post
+
+
+admin_misc_zoo_index:
+    pattern: /admin/misc/zoo
+    defaults: { _controller: AdminBundle:Zoo:index }
+admin_misc_zoo_new:
+    pattern: /admin/misc/zoo/new
+    defaults: { _controller: AdminBundle:Zoo:new }
+admin_misc_zoo_create:
+    pattern: /admin/misc/zoo/create
+    defaults: { _controller: AdminBundle:Zoo:create }
+    requirements:
+        _method: post
+admin_misc_zoo_edit:
+    pattern: /admin/misc/zoo/{id}/edit
+    defaults: { _controller: AdminBundle:Zoo:edit }
+    requirements:
+        id: \d+
+admin_misc_zoo_update:
+    pattern: /admin/misc/zoo/{id}/update
+    defaults: { _controller: AdminBundle:Zoo:update }
+    requirements:
+        id: \d+
+        _method: put|post
+admin_misc_zoo_delete:
+    pattern: /admin/misc/zoo/{id}/delete
+    defaults: { _controller: AdminBundle:Zoo:delete }
+    requirements:
+        id: \d+
+        _method: delete|post
+
+
+admin_species_homepage:
+    pattern:  /admin/species
+    defaults: { _controller: AdminBundle:Species:index }
+admin_species_new:
+    pattern: /admin/species/new
+    defaults: { _controller: AdminBundle:Species:new }
+admin_species_create:
+    pattern: /admin/species/create
+    defaults: { _controller: AdminBundle:Species:create }
+    requirements:
+        _method: post
+admin_species_edit:
+    pattern: /admin/species/{id}/edit
+    defaults: { _controller: AdminBundle:Species:edit }
+    requirements:
+        id: \d+
+admin_species_update:
+    pattern: /admin/species/{id}/update
+    defaults: { _controller: AdminBundle:Species:update }
+    requirements:
+        id: \d+
+        _method: put|post
+admin_species_delete:
+    pattern: /admin/species/{id}/delete
+    defaults: { _controller: AdminBundle:Species:delete }
+    requirements:
+        id: \d+
+        _method: delete|post
+
+
+admin_animal_homepage:
+    pattern:  /admin/animal
+    defaults: { _controller: AdminBundle:Animal:index }
+admin_animal_new:
+    pattern: /admin/animal/new
+    defaults: { _controller: AdminBundle:Animal:new }
+admin_animal_create:
+    pattern: /admin/animal/create
+    defaults: { _controller: AdminBundle:Animal:create }
+    requirements:
+        _method: post
+admin_animal_edit:
+    pattern: /admin/animal/{id}/edit
+    defaults: { _controller: AdminBundle:Animal:edit }
+    requirements:
+        id: \d+
+admin_animal_update:
+    pattern: /admin/animal/{id}/update
+    defaults: { _controller: AdminBundle:Animal:update }
+    requirements:
+        id: \d+
+        _method: put|post
+admin_animal_delete:
+    pattern: /admin/animal/{id}/delete
+    defaults: { _controller: AdminBundle:Animal:delete }
+    requirements:
+        id: \d+
+        _method: delete|post
