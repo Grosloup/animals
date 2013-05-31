@@ -1,0 +1,32 @@
+id
+
+nom commun                          - commonName
+slug                                - slug
+nom latin                           - latinName
+nom anglais                         - englishName
+
+description                         - description
+organisation sociale                - socialOrganisation
+repartition géographique            - distribution
+
+hauteur male/femelle/petit          - hMale - hFemale    - hBaby
+longueur male/femelle/petit         - lMale - lFemale    - lBaby
+poids male/femelle/petit            - hMale - hFemale    - hBaby
+
+esperance de vie                    - lifeSpan
+
+maturite sexuelle male/femelle      - maturityMale - maturityFemale
+cycle                               - cycle
+durée de gestation                  - gestation
+rythme de reproduction              - reproRythm
+petits par portée                   - numBabies
+age de sevrage                      - weaning
+
+regime alimentaire sauvage          - dietWild
+regime alimentaire zoo              - dietZoo
+
+status iucn                         - iucnStatus
+--------
+animals                             - animals
+
+

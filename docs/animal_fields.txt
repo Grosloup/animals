@@ -1,0 +1,26 @@
+id
+
+nom                             - name
+identifiant puce/bague/boucle   - chip  - earring   - collar
+
+
+sexe                            - sex
+date de naissance               - birthdate
+date d'arrivée                  - indate
+date de départ                  - outdate
+date de décès                   - deathdate
+status
+slug                            - slug
+isWeightable                    - isWeightable
+
+
+provenance                      - origin
+lieu de naissance               - birthPlace
+
+id mere                         - motherId
+id pere                         - fatherId
+
+------
+id espece                       - species
+events                          - events
+weights                         - weights
