@@ -17,7 +17,7 @@ class AnimalController extends BaseController
 {
     public function indexAction()
     {
-        $animals = $this->getEm()->getRepository("AnimalBundle:Animal")->findAll();
+        $animals = $this->getEm()->getRepository("AnimalBundle:Animal")->findAllBySpecies();
         return $this->render("AdminBundle:Animal:index.html.twig", ["animals"=>$animals]);
     }
 

@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnimalRepository extends EntityRepository
 {
+	public function findAllBySpecies()
+	{
+		$query = $this->_em->createQuery('SELECT a FROM Site\AnimalBundle\Entity\Animal a LEFT JOIN a.species s ORDER BY s.commonName,a.name ASC');
+		return $query->getResult();
+	}
 }
