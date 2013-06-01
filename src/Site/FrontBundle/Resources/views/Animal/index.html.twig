@@ -9,9 +9,7 @@
 
         </div>
         <div class="col10">
-                <form action="" method="post" id="quick_search_form">
-                    <input type="text" name="quick_search" id="quick_search" placeholder="recherche rapide"> <input type="submit" value="GO" class="btn bnt-simple rounded">
-                </form>
+                //TODO quick search
         </div>
     </div>
 
@@ -32,7 +30,7 @@
 						<ul>
 							{% for animal in sp.animals %} 
 							{% set id = animal.name ? animal.name : animal.chip ? animal.chip : animal.earring ? animal.earring : animal.collar ? animal.collar : "non identifié" %}
-								<li>{{ id }} - {{ animal.sex }} - <a href="">voir</a></li>
+								<li>{{ id }} - {{ animal.sex }} - <a href="{{ path("front_animal_show", {"id": animal.id}) }}">voir</a></li>
 							{% endfor %}
 						</ul>
 						{% else %}

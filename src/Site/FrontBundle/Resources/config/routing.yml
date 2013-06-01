@@ -11,3 +11,8 @@ front_search:
 front_animal_homepage:
     pattern: /animals
     defaults: { _controller: FrontBundle:Animal:index }
+front_animal_show:
+    pattern: /animals/{id}/show
+    defaults: { _controller: FrontBundle:Animal:show }
+    requirements:
+        id: \d+

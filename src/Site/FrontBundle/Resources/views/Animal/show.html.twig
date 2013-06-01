@@ -1,0 +1,47 @@
+{% extends "FrontBundle:Layouts:stylesAndLibs.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+        <div class="col2">
+            {{ include("FrontBundle:Layouts:side-nav.html.twig") }}
+
+        </div>
+        <div class="col10">
+                //TODO quick search
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col2">
+
+                <ul class="side-nav">
+                    <li><a href="{{ path("front_animal_homepage") }}">Liste des animaux</a></li>
+                    <li><a href="">Liste des espèces</a></li>
+                </ul>
+
+            </div>
+            <div class="col10">
+                {% set id = entity.name ? entity.name : entity.chip ? entity.chip : entity.earring ? entity.earring : entity.collar ? entity.collar : "non identifié" %}
+				<h1>{{ id }} <small> - {{ entity.species.commonName }} - {{ entity.sex }}</small></h1>
+                {% set age = entity.age %}
+                <h4>Age : {% transchoice age %}
+                    {0} moins d'un an|{1} un an|]1,Inf] %age% ans
+                {% endtranschoice %}</h4>
+                
+                
+                <p>date de naissance : {{entity.birthdate}}</p>
+                <h4>Identifiants :</h4>
+                <ul>
+                    {% if entity.chip %} <li>Puce :{{entity.chip }}</li>{% endif %}
+                    {% if entity.earring %} <li>Boucle :{{entity.earring }}</li>{% endif %}
+                    {% if entity.collar %} <li>bague :{{entity.collar }}</li>{% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

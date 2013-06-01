@@ -299,6 +299,11 @@ class Animal
         return $this;
     }
 
+    public function getAge()
+    {
+        return $this->birthdate->diff(new \DateTime("now"))->y;
+    }
+
     /**
      * Get indate
      *

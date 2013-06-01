@@ -30,6 +30,9 @@ body{
     font-weight: bold;
     font-size: 1em + (1 / $i);
     line-height: (1em + (1 / $i)) * 1.4 ;
+    small{
+      font-size: 1em - (1 / $i) * 0.5;
+    }
   }
 }
 

@@ -44,11 +44,17 @@ h1 {
   font-size: 2em;
   line-height: 2.8em;
 }
+h1 small {
+  font-size: 0.5em;
+}
 
 h2 {
   font-weight: bold;
   font-size: 1.5em;
   line-height: 2.1em;
+}
+h2 small {
+  font-size: 0.75em;
 }
 
 h3 {
@@ -56,11 +62,17 @@ h3 {
   font-size: 1.33333em;
   line-height: 1.86667em;
 }
+h3 small {
+  font-size: 0.83333em;
+}
 
 h4 {
   font-weight: bold;
   font-size: 1.25em;
   line-height: 1.75em;
+}
+h4 small {
+  font-size: 0.875em;
 }
 
 h5 {
@@ -68,11 +80,17 @@ h5 {
   font-size: 1.2em;
   line-height: 1.68em;
 }
+h5 small {
+  font-size: 0.9em;
+}
 
 h6 {
   font-weight: bold;
   font-size: 1.16667em;
   line-height: 1.63333em;
+}
+h6 small {
+  font-size: 0.91667em;
 }
 
 .container {
