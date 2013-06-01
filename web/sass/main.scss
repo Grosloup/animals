@@ -29,7 +29,7 @@ body{
   h#{$i}{
     font-weight: bold;
     font-size: 1em + (1 / $i);
-    line-height: (1em + (1 / $i)) * 1.4 ;
+    line-height: (1em + (1 / $i * 0.5)) * 1.2 ;
     small{
       font-size: 1em - (1 / $i) * 0.5;
     }
@@ -101,8 +101,11 @@ table{
       line-height: 1;
     }
     th{
-      border-top: none;
       font-weight: bold;
+    }
+    thead tr th{
+      border-top: none;
+      
     }
 
     &.table-striped tbody > tr:nth-child(2n+1) > td, &.table-striped tbody > tr:nth-child(2n+1) > th {
@@ -124,15 +127,18 @@ table{
       line-height: 1;
     }
     th{
-      border-top: none;
       font-weight: bold;
+    }
+    thead tr th{
+      border-top: none;
+      
     }
 
     &.table-striped tbody > tr:nth-child(2n+1) > td, &.table-striped tbody > tr:nth-child(2n+1) > th {
       background-color: rgba(#fff, 0.1);
     }
 
-    &.table-hover tbody tr:hover > td, &.table-striped tbody tr:hover > th {
+    &.table-hover tbody tr:hover > td, &.table-hover tbody tr:hover > th {
       background-color: rgba(#fff, 0.4);
     }
   }
@@ -237,6 +243,31 @@ table{
     &:hover{
       background-color: lighten(#ff9f35, 10%);
     }
+  }
+}
+.pins{
+  padding: 2px 5px;
+  display: inline-block;
+  @include border-radius(25px);
+  background-color: #a1bbc7;
+  font-weight: bold;
+  color: #1c2c37;
+  &.error{
+    @extend .error;
+  }
+  &.warning{
+    @extend .warning;
+  }
+  &.success{
+    @extend .success;
+  }
+  &.dark{
+    background-color: #1c2c37;
+    color: #a1bbc7;
+  }
+  &.primary{
+    background-color: #5070ff;
+    color: #fff;
   }
 }
 .top-nav-bar{

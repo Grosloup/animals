@@ -41,6 +41,7 @@ class SpeciesType extends AbstractType
             ->add("latinName", "text", ["label"=>"Nom latin :"])
             ->add("englishName", "text", ["label"=>"Nom anglais :"])
             ->add("iucnStatus", "choice", ["label"=>"Status IUCN :","choices"=>$choices])
+            ->add("iucnLink")
             ->add("socialOrganisation")
             ->add("description")
             ->add("distribution")
@@ -74,6 +75,7 @@ class SpeciesType extends AbstractType
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
+        $view["iucnLink"]->vars["label"] = "Lien vers IUCN :";
         $view["socialOrganisation"]->vars["label"] = "Organisation sociale :";
         $view["description"]->vars["label"] = "Description :";
         $view["distribution"]->vars["label"] = "Répartition géographique :";

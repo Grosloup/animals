@@ -214,6 +214,22 @@ class Species
     protected $animals;
 
     /**
+    * @ORM\Column(name="iucnLink", type="string", length=255, nullable=true)
+    */
+    protected $iucnLink;
+
+    public function getIucnLink()
+    {
+        return $this->iucnLink;
+    }
+
+    public function setIucnLink($iucnLink)
+    {
+        $this->iucnLink = $iucnLink;
+        return $this;
+    }
+
+    /**
      * Get id
      *
      * @return integer

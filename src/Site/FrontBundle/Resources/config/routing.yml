@@ -16,3 +16,9 @@ front_animal_show:
     defaults: { _controller: FrontBundle:Animal:show }
     requirements:
         id: \d+
+
+front_species_show:
+    pattern: /species/{id}/show
+    defaults: { _controller: FrontBundle:Species:show }
+    requirements:
+        id: \d+

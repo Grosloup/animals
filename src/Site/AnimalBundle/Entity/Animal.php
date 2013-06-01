@@ -301,7 +301,11 @@ class Animal
 
     public function getAge()
     {
-        return $this->birthdate->diff(new \DateTime("now"))->y;
+        if($this->birthdate != null && $this->birthdate instanceof \DateTime){
+            return $this->birthdate->diff(new \DateTime("now"))->y;
+        }
+        return 0;
+        
     }
 
     /**

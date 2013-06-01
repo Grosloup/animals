@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
         <div class="col2">
-            {{ include("FrontBundle:Layouts:side-nav.html.twig") }}
+            
 
         </div>
         <div class="col10">
@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col2">
-
+                {{ include("FrontBundle:Layouts:side-nav.html.twig") }}
                 <ul class="side-nav">
                     <li><a href="{{ path("front_animal_homepage") }}">Liste des animaux</a></li>
                     <li><a href="">Liste des espèces</a></li>
@@ -24,20 +24,65 @@
             </div>
             <div class="col10">
                 {% set id = entity.name ? entity.name : entity.chip ? entity.chip : entity.earring ? entity.earring : entity.collar ? entity.collar : "non identifié" %}
-				<h1>{{ id }} <small> - {{ entity.species.commonName }} - {{ entity.sex }}</small></h1>
-                {% set age = entity.age %}
+                {% if entity.status == "présent" %}
+                                    {% set style="background-color: #1fba41;color: #fff;" %}
+                                {% elseif entity.status == "déplacé" %}
+                                    {% set style="background-color: #a1bbc7;color: #1c2c37;" %}
+                                {% elseif entity.status == "parti" %}
+                                    {% set style="background-color: #ff9f35;color: #fff;" %}
+                                {% else %}
+                                    {% set style="background-color: #1c2c37;color: #a1bbc7;" %}
+                                {% endif %}
+				<h1><span style="{{style}}padding:0 5px;">{{ id }}</span> <small> - {{ entity.species.commonName }} - {{ entity.sex }}</small></h1>
+                <div class="row">
+                    <div class="col4">
+                        {% set age = entity.age %}
                 <h4>Age : {% transchoice age %}
-                    {0} moins d'un an|{1} un an|]1,Inf] %age% ans
+                    {0} inconnu|]0,1[moins d'un an|{1} un an|]1,Inf] %age% ans
                 {% endtranschoice %}</h4>
-                
-                
                 <p>date de naissance : {{entity.birthdate}}</p>
-                <h4>Identifiants :</h4>
+                    </div>
+                    <div class="col4">
+                        <h4>Identifiants :</h4>
                 <ul>
                     {% if entity.chip %} <li>Puce :{{entity.chip }}</li>{% endif %}
                     {% if entity.earring %} <li>Boucle :{{entity.earring }}</li>{% endif %}
                     {% if entity.collar %} <li>bague :{{entity.collar }}</li>{% endif %}
                 </ul>
+                    </div>
+                    <div class="col4">
+                        <h4>Lieu de provenance:</h4>
+                        <p>{% if entity.origin %}{{ entity.origin }}{% else %} -- {% endif %}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col4">
+                        <h4>Lieu de naissance :</h4>
+                        <p>{% if entity.birthPlace %}{{ entity.birthPlace }}{% else %} -- {% endif %}</p>
+                    </div>
+                    <div class="col4">
+                        <h4>Id mère:</h4>
+                        <p>{% if entity.motherId %}{{ entity.motherId }}{% else %} -- {% endif %}</p>
+                    </div>
+                    <div class="col4">
+                        <h4>Id père:</h4>
+                        <p>{% if entity.fatherId %}{{ entity.fatherId }}{% else %} -- {% endif %}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col4">
+                        <h4>Date d'entrée:</h4>
+                        <p>{% if entity.indate %}{{ entity.indate }}{% else %} -- {% endif %}</p>
+                    </div>
+                    <div class="col4">
+                        <h4>Date de départ:</h4>
+                        <p>{% if entity.outdate %}{{ entity.outdate }}{% else %} -- {% endif %}</p>
+                    </div>
+                    <div class="col4">
+                        <h4>Date de décès:</h4>
+                        <p>{% if entity.deathdate %}{{ entity.deathdate }}{% else %} -- {% endif %}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

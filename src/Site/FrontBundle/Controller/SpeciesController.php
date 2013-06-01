@@ -4,7 +4,7 @@ namespace Site\FrontBundle\Controller;
 
 use Site\BaseBundle\Controller\BaseController;
 
-class AnimalController extends BaseController
+class SpeciesController extends BaseController
 {
     public function indexAction()
     {
@@ -17,11 +17,15 @@ class AnimalController extends BaseController
 
     public function showAction($id)
     {
-    	$entity = $this->getEm()->getRepository("AnimalBundle:Animal")->find($id);
+    	$entity = $this->getEm()->getRepository("AnimalBundle:Species")->find($id);
     	if(!$entity){
-    		throw $this->createNotFoundException("Animal introuvable.");
+    		throw $this->createNotFoundException("Espèce introuvable.");
     	}
-    	return $this->render("FrontBundle:Animal:show.html.twig", ["entity"=>$entity]);
+        if($this->container->hasParameter("iucn")){
+            $iucn = $this->container->getParameter("iucn");
+        }
+        $status = $iucn[$entity->getIucnStatus()];
+    	return $this->render("FrontBundle:Species:show.html.twig", ["entity"=>$entity, "iucn"=>$status]);
     }
 
 }

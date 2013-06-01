@@ -18,4 +18,29 @@ class SpeciesRepository extends EntityRepository
 		$query = $qb->getQuery();
 		return $query->getResult();
 	}
+
+	public function getExistingAnimalsBySpecies()
+	{
+		$result = [];
+		$total = 0;
+		$totalSpecies = 0;
+		$sp = $this->findAll();
+		foreach ($sp as $species) {
+			$r = 0;
+			$totalSpecies += 1;
+			$animals = $species->getAnimals();
+			if(count($animals)>0){
+				foreach ($animals as $animal) {
+					if($animal->getStatus() == "présent"){
+						$r += 1;
+					}
+				}
+			}
+			$total += $r;
+			$result[$species->getCommonName()] = $r;
+		}
+		$result["totalSpecies"] = $totalSpecies;
+		$result["total"] = $total;
+		return $result;
+	}
 }

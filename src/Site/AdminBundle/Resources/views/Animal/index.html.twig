@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{ animal.id }}</td>
                                 {% if animal.status == "présent" %}
-                                    {% set style="background-color: #1fba41;color: #fff" %}
+                                    {% set style="background-color: #1fba41;color: #fff;" %}
                                 {% elseif animal.status == "déplacé" %}
                                     {% set style="background-color: #a1bbc7;color: #1c2c37;" %}
                                 {% elseif animal.status == "parti" %}

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
         <div class="col2">
-            {{ include("FrontBundle:Layouts:side-nav.html.twig") }}
+            
 
         </div>
         <div class="col10">
@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col2">
-
+                {{ include("FrontBundle:Layouts:side-nav.html.twig") }}
                 <ul class="side-nav">
                     <li><a href="{{ path("front_animal_homepage") }}">Liste des animaux</a></li>
                     <li><a href="">Liste des espèces</a></li>
@@ -23,9 +23,11 @@
 
             </div>
             <div class="col10">
+                <h1>Liste des animaux classés par espèce</h1>
+                {% if numAnimalsBySpecies.total > 0 %}<p>{{numAnimalsBySpecies.total}} individu(s) présent(s) sur {{numAnimalsBySpecies.totalSpecies}} espèce(s)</p>{% endif %}
 				{% if species|length > 0 %}
 					{% for sp in species %}
-						<h2>{{ sp.commonName }}</h2>
+						<h2>{{ sp.commonName }}{% if sp.animals|length > 0 %} <small>({{numAnimalsBySpecies[sp.commonName]}})</small>{% endif %} - <small><a href="{{ path("front_species_show", {"id": sp.id}) }}">+ infos</a></small></h2>
 						{% if sp.animals|length > 0 %}
 						<ul>
 							{% for animal in sp.animals %} 
