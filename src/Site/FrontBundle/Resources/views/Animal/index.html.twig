@@ -1,0 +1,51 @@
+{% extends "FrontBundle:Layouts:stylesAndLibs.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+        <div class="col2">
+            {{ include("FrontBundle:Layouts:side-nav.html.twig") }}
+
+        </div>
+        <div class="col10">
+                <form action="" method="post" id="quick_search_form">
+                    <input type="text" name="quick_search" id="quick_search" placeholder="recherche rapide"> <input type="submit" value="GO" class="btn bnt-simple rounded">
+                </form>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col2">
+
+                <ul class="side-nav">
+                    <li><a href="{{ path("front_animal_homepage") }}">Liste des animaux</a></li>
+                    <li><a href="">Liste des espèces</a></li>
+                </ul>
+
+            </div>
+            <div class="col10">
+				{% if species|length > 0 %}
+					{% for sp in species %}
+						<h2>{{ sp.commonName }}</h2>
+						{% if sp.animals|length > 0 %}
+						<ul>
+							{% for animal in sp.animals %} 
+							{% set id = animal.name ? animal.name : animal.chip ? animal.chip : animal.earring ? animal.earring : animal.collar ? animal.collar : "non identifié" %}
+								<li>{{ id }} - {{ animal.sex }} - <a href="">voir</a></li>
+							{% endfor %}
+						</ul>
+						{% else %}
+
+						{% endif %}
+					{% endfor %}
+				{% else %}
+
+				{% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class SpeciesRepository extends EntityRepository
 {
+	public function findAllOrderByName()
+	{
+		$qb = $this->createQueryBuilder('s')->orderBy('s.commonName', 'ASC');
+		$query = $qb->getQuery();
+		return $query->getResult();
+	}
 }

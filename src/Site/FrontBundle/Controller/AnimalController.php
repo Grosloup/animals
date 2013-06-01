@@ -8,7 +8,9 @@ class AnimalController extends BaseController
 {
     public function indexAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig');
+    	//$species = $this->getEm()->getRepository("AnimalBundle:Species")->findBy([],["commonName"=>"ASC"]);
+    	$species = $this->getEm()->getRepository("AnimalBundle:Species")->findAllOrderByName();
+        return $this->render('FrontBundle:Animal:index.html.twig',["species"=>$species]);
     }
 
 }
