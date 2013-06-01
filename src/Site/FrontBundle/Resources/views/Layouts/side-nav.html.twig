@@ -1,0 +1,6 @@
+{% set page = app.request.get("_route") %}
+<ul class="side-nav">
+    <li {% if  page == "admin_homepage" %}class="active"{% endif %}><a href="{{ path("admin_homepage") }}">Admin</a></li>
+    <li><a href="">Mon compte</a></li>
+    <li><a href="">Déconnexion</a></li>
+</ul>
