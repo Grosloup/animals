@@ -53,9 +53,9 @@
                                     </ul>
                                 </td>
                                 <td>{% if animal.name != null %}{{ animal.name }}{% else %}anonyme{% endif %}</td>
-                                <td>{{ animal.species.commonName }}</td>
+                                <td>{% if animal.species != null %}{{ animal.species.commonName }}{% else %}<span class="error">indéterminée</span>{% endif %}</td>
                                 <td><a href="{{ path("admin_animal_edit", {"id":animal.id}) }}">Editer</a></td>
-                            </tr>
+                            </tr> 
                         {% endfor %}
                         </tbody>
                     </table>

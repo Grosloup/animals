@@ -1,3 +1,13 @@
 front_homepage:
     pattern:  /
     defaults: { _controller: FrontBundle:Default:index }
+
+front_search:
+    pattern: /search
+    defaults: { _controller: FrontBundle:Search:search }
+    requirements:
+        _method: post
+
+front_animal_homepage:
+    pattern: /animals
+    defaults: { _controller: FrontBundle:Animal:index }

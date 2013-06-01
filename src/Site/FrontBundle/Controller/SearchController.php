@@ -3,10 +3,11 @@
 namespace Site\FrontBundle\Controller;
 
 use Site\BaseBundle\Controller\BaseController;
+use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends BaseController
+class SearchController extends BaseController
 {
-    public function indexAction()
+    public function searchAction(Request $request)
     {
         return $this->render('FrontBundle:Default:index.html.twig');
     }
