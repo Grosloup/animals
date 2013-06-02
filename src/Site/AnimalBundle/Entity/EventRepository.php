@@ -12,4 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
+	public function findAllByAnimalId($id)
+	{
+
+	}
+
+	public function paginateByDate($page, $limit)
+	{
+
+		$offset = $limit * ($page - 1);
+		$qb = $this->createQueryBuilder('e')
+					->orderBy('e.date', 'DESC')
+					->setFirstResult($offset)
+					->setMaxResults($limit);
+		$query = $qb->getQuery();
+		return $query->getResult();					
+	}
 }

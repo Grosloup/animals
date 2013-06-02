@@ -12,10 +12,11 @@ front_animal_homepage:
     pattern: /animals
     defaults: { _controller: FrontBundle:Animal:index }
 front_animal_show:
-    pattern: /animals/{id}/show
-    defaults: { _controller: FrontBundle:Animal:show }
+    pattern: /animals/{id}/show/{page}
+    defaults: { _controller: FrontBundle:Animal:show, page:1 }
     requirements:
         id: \d+
+        page: \d*
 
 front_species_show:
     pattern: /species/{id}/show

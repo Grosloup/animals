@@ -15,13 +15,14 @@ class AnimalController extends BaseController
         return $this->render('FrontBundle:Animal:index.html.twig',["species"=>$species, "numAnimalsBySpecies"=>$numAnimalsBySpecies]);
     }
 
-    public function showAction($id)
+    public function showAction($id, $page)
     {
     	$entity = $this->getEm()->getRepository("AnimalBundle:Animal")->find($id);
     	if(!$entity){
     		throw $this->createNotFoundException("Animal introuvable.");
     	}
-    	return $this->render("FrontBundle:Animal:show.html.twig", ["entity"=>$entity]);
+        $events = $this->getEm()->getRepository("AnimalBundle:Event")->paginateByDate($page,2);
+    	return $this->render("FrontBundle:Animal:show.html.twig", ["entity"=>$entity,"page"=>$page,"events"=>$events]);
     }
 
 }
