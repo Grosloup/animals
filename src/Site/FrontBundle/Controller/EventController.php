@@ -11,7 +11,7 @@ class EventController extends BaseController
 {
     public function indexAction()
     {
-    	
+
     }
 
     public function newAction()
@@ -42,16 +42,16 @@ class EventController extends BaseController
         $form = $this->createForm(new EventType($id), $event);
         if($request->isMethod("POST")){
             $form->bind($request);
-            
+
             $em = $this->getEm();
             $animal = $em->getRepository("AnimalBundle:Animal")->find($id);
             if(!$animal){
                 throw $this->createNotFoundException("Animal introuvable");
             }
             if($form->isValid()){
-                
+
                 $em = $this->getEm();
-                
+
                 $event->setAnimal($animal);
                 $em->persist($event);
                 $em->flush();
@@ -59,6 +59,19 @@ class EventController extends BaseController
             }
         }
         return $this->render("FrontBundle:Event:add.html.twig",["form"=>$form->createView(), "animal"=>$animal]);
-    }    
+    }
+
+    public function showAction($id, $page)
+    {
+        $animal = $this->getEm()->getRepository("AnimalBundle:Animal")->find($id);
+        if(!$animal){
+            throw $this->createNotFoundException("Animal introuvable");
+        }
+        $events = $animal->getEvents();
+        $paginator = $this->container->get("site.basebundle.services.paginator");
+        $paginator->paginateCollection($events, $page, 5);
+
+        return $this->render("FrontBundle:Event:show.html.twig", ["entity"=>$animal,"paginator"=>$paginator]);
+    }
 
 }

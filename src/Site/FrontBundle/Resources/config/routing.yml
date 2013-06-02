@@ -12,8 +12,13 @@ front_animal_homepage:
     pattern: /animals
     defaults: { _controller: FrontBundle:Animal:index }
 front_animal_show:
-    pattern: /animals/{id}/show/{page}
-    defaults: { _controller: FrontBundle:Animal:show, page:1 }
+    pattern: /animals/{id}/show
+    defaults: { _controller: FrontBundle:Animal:show}
+    requirements:
+        id: \d+
+front_animal_show_events:
+    pattern: /animals/{id}/show_events/{page}
+    defaults: { _controller: FrontBundle:Event:show, page: 1}
     requirements:
         id: \d+
         page: \d*
