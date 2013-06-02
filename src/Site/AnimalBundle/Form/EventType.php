@@ -17,14 +17,22 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class EventType extends AbstractType
 {
+    private $id;
+
+    public function __construct($id = null)
+    {
+        $this->id = $id;
+    }
     
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         
-        /* $builder->add("name")
-            ->add("status","choice",["choices"=>$status_choices])
-            ->add("chip")
+         $builder->add("type")
+            ->add("date","text")
+            ->add("body")
+            ->add("animal_id","hidden",["data"=>$this->id,"mapped"=>false])
+           /* ->add("chip")
             ->add("earring")
             ->add("collar")
             ->add("species")
@@ -33,16 +41,16 @@ class EventType extends AbstractType
             ->add("indate","text")
             ->add("outdate","text")
             ->add("deathdate","text")
-            ->add("birthPlace")->add("origin")->add("motherId")->add("fatherId")->add("isWeightable"); */
+            ->add("birthPlace")->add("origin")->add("motherId")->add("fatherId")->add("isWeightable") */;
     }
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        /*
-        $view["name"]->vars["label"] = "Nom :";
-        $view["status"]->vars["label"] = "Status :";
-        $view["chip"]->vars["label"] = "Puce :";
-        $view["earring"]->vars["label"] = "Boucle :";
+        
+        $view["type"]->vars["label"] = "Type d'événement :";
+        $view["body"]->vars["label"] = "Texte :";
+        $view["date"]->vars["label"] = "Date :";
+        /*$view["earring"]->vars["label"] = "Boucle :";
         $view["collar"]->vars["label"] = "Bague :";
         $view["species"]->vars["label"] = "Espèce :";
         $view["birthdate"]->vars["label"] = "Date de naissance :";

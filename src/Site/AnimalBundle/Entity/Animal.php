@@ -56,6 +56,7 @@ class Animal
 
     /**
      * @ORM\OneToMany(targetEntity="Site\AnimalBundle\Entity\Event", mappedBy="animal")
+     * @ORM\OrderBy({"date"="DESC"})
      */
     protected $events;
     /**

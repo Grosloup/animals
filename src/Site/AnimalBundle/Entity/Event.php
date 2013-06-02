@@ -57,6 +57,9 @@ class Event
      */
     private $createdAt;
 
+    protected $dateTimeFormat = "d/m/Y H:i:s";
+    protected $dateFormat = "d/m/Y";
+
     /**
      * Get id
      *
@@ -97,6 +100,9 @@ class Event
      */
     public function getDate()
     {
+        if($this->date instanceof \DateTime){
+            return $this->date->format($this->dateFormat);
+        }
         return $this->date;
     }
 
@@ -108,6 +114,9 @@ class Event
      */
     public function setDate($date)
     {
+        if(is_string($date)){
+            $date = \DateTime::createFromFormat($this->dateTimeFormat,$date . " 00:00:00");
+        }
         $this->date = $date;
 
         return $this;

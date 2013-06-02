@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="/css/ui/jquery-ui-1.10.3.custom.min.css">
 {% endblock %}
 
+{% form_theme form "BaseBundle:Form:form_layout.html.twig" %}
+
 {% block body %}
 
     <div class="container">
@@ -31,6 +33,7 @@
 
                 <form class="hform" action="{{ path("front_event_create_add") }}" method="post" {{ form_enctype(form) }}>
                     {{ form_widget(form) }}
+                    
                     <div class="form-row">
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary" formnovalidate>Créer</button>
@@ -54,7 +57,11 @@
     <script type="text/javascript">
         $(function(){
             $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
-            $("#date").datepicker();
+            $("#event_form_date").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date(1970,0,1)
+            });
         });
     </script>
 {% endblock %}

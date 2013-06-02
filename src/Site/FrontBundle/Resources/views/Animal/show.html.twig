@@ -86,6 +86,21 @@
                 <div class="row">
                     <div class="col12"><a href="{{ path("front_event_add",{"id":entity.id}) }}" class="btn btn-primary">Ajouter un événement</a></div>
                 </div>
+                <div class="row">
+                    <div class="col12">
+                        <h4>Evénements</h4>
+                        {% if entity.events|length > 0 %}
+                            {% for event in entity.events %}
+                            <div class="event">
+                                <p><span class="date">{{event.date}}</span>&nbsp;<span class="type" style="background-color:{{"#"~event.type.color.background}};color:{{"#"~event.type.color.foreground}};">{{ event.type.name}}</span></p>
+                                <p class="body">{{ event.body }}</p> 
+                            </div>      
+                            {% endfor %}
+                        {% else %}
+                            <p>Pas d'événements enregistrés pour cet animal</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
