@@ -83,6 +83,9 @@
                         <p>{% if entity.deathdate %}{{ entity.deathdate }}{% else %} -- {% endif %}</p>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col12"><a href="{{ path("front_event_add",{"id":entity.id}) }}" class="btn btn-primary">Ajouter un événement</a></div>
+                </div>
             </div>
         </div>
     </div>

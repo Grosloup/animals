@@ -27,6 +27,7 @@
                 {% if numAnimalsBySpecies.total > 0 %}<p>{{numAnimalsBySpecies.total}} individu(s) présent(s) sur {{numAnimalsBySpecies.totalSpecies}} espèce(s)</p>{% endif %}
 				{% if species|length > 0 %}
 					{% for sp in species %}
+                    <div class="animal-list">
 						<h2>{{ sp.commonName }}{% if sp.animals|length > 0 %} <small>({{numAnimalsBySpecies[sp.commonName]}})</small>{% endif %} - <small><a href="{{ path("front_species_show", {"id": sp.id}) }}">+ infos</a></small></h2>
 						{% if sp.animals|length > 0 %}
 						<ul>
@@ -38,6 +39,7 @@
 						{% else %}
 
 						{% endif %}
+                    </div>
 					{% endfor %}
 				{% else %}
 

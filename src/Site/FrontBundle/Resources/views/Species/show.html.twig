@@ -22,7 +22,7 @@
                 </ul>
 
             </div>
-            <div class="col10">
+            <div class="col10 species-datas">
                 <h1>{{entity.commonName}}{% if entity.englishName %} <small>( {{entity.englishName}} )</small>{% endif %}</h1>
                 {% if entity.latinName %} <h3>{{ entity.latinName }}</h3>{% endif %}
                 <p><a href="{{entity.iucnLink}}" target="_blank"><span class="pins error">{{iucn.initial}}</span> {{iucn.name}} ({{iucn.name_fr}})</a></p>
@@ -31,7 +31,7 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>&nbsp;</th>
+                            <th>Mesures</th>
                             <th>Hauteur</th>
                             <th>Longueur</th>
                             <th>Poids</th>
@@ -58,6 +58,8 @@
                         </tr>
                     </tbody>
                 </table>
+                <h3>Répartition géographique</h3>
+                <p>{{entity.distribution}}</p>
             </div>
         </div>
     </div>

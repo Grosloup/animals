@@ -22,3 +22,22 @@ front_species_show:
     defaults: { _controller: FrontBundle:Species:show }
     requirements:
         id: \d+
+
+front_event_add:
+    pattern: /event/{id}/add
+    defaults: { _controller: FrontBundle:Event:add }
+    requirements:
+        id: \d+
+front_event_new:
+    pattern: /event/new
+    defaults: { _controller: FrontBundle:Event:new }
+front_event_create_new:
+    pattern: /event/create/new
+    defaults: { _controller: FrontBundle:Event:createnew }
+    requirements:
+        _method: post
+front_event_create_add:
+    pattern: /event/create/add
+    defaults: { _controller: FrontBundle:Event:createadd }
+    requirements:
+        _method: post
